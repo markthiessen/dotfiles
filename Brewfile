@@ -6,11 +6,13 @@ tap 'homebrew/bundle'
 
 # Use latest git 
 brew 'git'
-brew 'httpie'
 brew 'python'
-brew 'azure-cli'
+
 brew 'azcopy'
+brew 'azure-cli'
+brew 'httpie'
 brew 'mas' # Mac App Store manager
+brew 'svn' # some font casks need this...
 brew 'yarn'
 brew 'imagemagick'
 brew 'pandoc'
@@ -29,9 +31,10 @@ cask 'discord'
 cask 'docker'
 cask 'figma'
 cask 'firefox'
+cask 'imageoptim'
 cask 'microsoft-edge'
 cask 'microsoft-teams'
-cask 'imageoptim'
+cask 'notion'
 cask 'transmission'
 cask 'visual-studio-code'
 cask 'zoom'
@@ -55,6 +58,7 @@ cask 'font-roboto'
 
 # Mac App Store
 mas 'BetterSnapTool', id: 417375580
+mas 'Lungo', id: 1263070803
 mas 'Microsoft To D‪o', id: 1212616790
 mas 'The Unarchive‪r', id: 425424353
 mas 'Slack', id: 618783545
