@@ -39,6 +39,8 @@ cask 'transmission'
 cask 'visual-studio-code'
 cask 'zoom'
 
+cask 'hammerspoon'
+
 # Quicklook
 cask 'qlcolorcode'
 cask 'qlstephen'

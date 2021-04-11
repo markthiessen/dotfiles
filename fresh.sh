@@ -27,6 +27,8 @@ mkdir $HOME/Extra
 # Clone Github repositories
 ./clone.sh
 
+
+
 # Removes .zshrc from $HOME (if it exists) and symlinks the .zshrc file from the .dotfiles
 rm -rf $HOME/.zshrc
 ln -s $HOME/.dotfiles/.zshrc $HOME/.zshrc
@@ -35,6 +37,11 @@ ln -s $HOME/Extra/zh-dracula/dracula.zsh-theme $/themes/dracula.zsh-theme
 
 # Symlink the Mackup config file to the home directory
 ln -s $HOME/.dotfiles/.mackup.cfg $HOME/.mackup.cfg
+
+# Connect hammerspoon
+mkdir $HOME/.hammerspoon
+ln -s $HOME/.dotfiles/hammerspoon/init.lua $HOME/.hammerspoon/init.lua
+ln -s $HOME/.dotfiles/hammerspoon/apps.lua $HOME/.hammerspoon/apps.lua
 
 # Set macOS preferences
 # We will run this last because this will reload the shell
