@@ -61,7 +61,6 @@ cask 'font-open-sans'
 cask 'font-roboto'
 
 # Mac App Store
-mas 'BetterSnapTool', id: 417375580
 mas 'Lungo', id: 1263070803
 mas 'Microsoft To D‪o', id: 1212616790
 mas 'The Unarchive‪r', id: 425424353
