@@ -18,6 +18,8 @@ brew 'imagemagick'
 brew 'pandoc'
 brew 'mackup'
 
+brew 'fzf'
+
 # Development
 brew 'imagemagick'
 brew 'nvm'
