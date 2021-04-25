@@ -27,8 +27,6 @@ mkdir $HOME/Extra
 # Clone Github repositories
 ./clone.sh
 
-
-
 # Removes .zshrc from $HOME (if it exists) and symlinks the .zshrc file from the .dotfiles
 rm -rf $HOME/.zshrc
 ln -s $HOME/.dotfiles/.zshrc $HOME/.zshrc
@@ -42,6 +40,8 @@ ln -s $HOME/.dotfiles/.mackup.cfg $HOME/.mackup.cfg
 mkdir $HOME/.hammerspoon
 ln -s $HOME/.dotfiles/hammerspoon/init.lua $HOME/.hammerspoon/init.lua
 ln -s $HOME/.dotfiles/hammerspoon/apps.lua $HOME/.hammerspoon/apps.lua
+ln -s $HOME/.dotfiles/hammerspoon/Spoons/MiroWindowsManager.spoon/docs.json $HOME/.hammerspoon/Spoons/MiroWindowsManager.spoon/docs.json
+ln -s $HOME/.dotfiles/hammerspoon/Spoons/MiroWindowsManager.spoon/init.lua $HOME/.hammerspoon/Spoons/MiroWindowsManager.spoon/init.lua
 
 # Set macOS preferences
 # We will run this last because this will reload the shell
