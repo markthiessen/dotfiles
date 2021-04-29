@@ -11,6 +11,7 @@ brew 'python'
 brew 'azcopy'
 brew 'azure-cli'
 brew 'httpie'
+brew 'ipcalc'
 brew 'mas' # Mac App Store manager
 brew 'svn' # some font casks need this...
 brew 'yarn'
