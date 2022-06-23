@@ -4,7 +4,7 @@ tap 'homebrew/cask-fonts'
 tap 'homebrew/cask-versions'
 tap 'homebrew/bundle'
 
-# Use latest git 
+# Use latest git
 brew 'git'
 brew 'python'
 
@@ -18,6 +18,7 @@ brew 'yarn'
 brew 'imagemagick'
 brew 'pandoc'
 brew 'mackup'
+brew 'tree'
 
 brew 'fzf'
 
@@ -63,8 +64,8 @@ cask 'font-roboto'
 
 # Mac App Store
 mas 'Lungo', id: 1263070803
-mas 'Microsoft To D‪o', id: 1212616790
-mas 'The Unarchive‪r', id: 425424353
+mas 'Microsoft To Do', id: 1212616790
+mas 'The Unarchiver', id: 425424353
 mas 'Slack', id: 618783545
-mas 'Yoink - Improved Drag and Dro‪p', id: 1260915283
-mas '1Password 7 - Password Manage‪r', id: 1333542190
+mas 'Yoink - Improved Drag and Drop', id: 1260915283
+mas '1Password 7 - Password Manager', id: 1333542190
