@@ -31,13 +31,17 @@ mkdir $HOME/Extra
 rm -rf $HOME/.zshrc
 ln -s $HOME/.dotfiles/.zshrc $HOME/.zshrc
 
-ln -s $HOME/Extra/zh-dracula/dracula.zsh-theme $/themes/dracula.zsh-theme
+mkdir $HOME/themes
+ln -s $HOME/Extra/zsh-dracula/dracula.zsh-theme $ZSH/themes/dracula.zsh-theme
 
 # Symlink the Mackup config file to the home directory
 ln -s $HOME/.dotfiles/.mackup.cfg $HOME/.mackup.cfg
 
 # Connect hammerspoon
 mkdir $HOME/.hammerspoon
+mkdir $HOME/.hammerspoon/Spoons
+mkdir $HOME/.hammerspoon/Spoons/MiroWindowsManager.spoon
+
 ln -s $HOME/.dotfiles/hammerspoon/init.lua $HOME/.hammerspoon/init.lua
 ln -s $HOME/.dotfiles/hammerspoon/apps.lua $HOME/.hammerspoon/apps.lua
 ln -s $HOME/.dotfiles/hammerspoon/Spoons/MiroWindowsManager.spoon/docs.json $HOME/.hammerspoon/Spoons/MiroWindowsManager.spoon/docs.json

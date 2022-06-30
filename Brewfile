@@ -19,6 +19,7 @@ brew 'imagemagick'
 brew 'pandoc'
 brew 'mackup'
 brew 'tree'
+brew 'thefuck'
 
 brew 'fzf'
 
@@ -26,20 +27,16 @@ brew 'fzf'
 brew 'imagemagick'
 brew 'nvm'
 brew 'yarn'
+brew 'ruby'
 
 # Apps
-cask '1password'
-cask '1password-cli'
 cask 'aerial'
-cask 'discord'
 cask 'docker'
 cask 'figma'
 cask 'firefox'
 cask 'imageoptim'
 cask 'microsoft-edge'
-cask 'microsoft-teams'
 cask 'notion'
-cask 'transmission'
 cask 'visual-studio-code'
 cask 'zoom'
 
@@ -64,8 +61,5 @@ cask 'font-roboto'
 
 # Mac App Store
 mas 'Lungo', id: 1263070803
-mas 'Microsoft To Do', id: 1212616790
 mas 'The Unarchiver', id: 425424353
-mas 'Slack', id: 618783545
 mas 'Yoink - Improved Drag and Drop', id: 1260915283
-mas '1Password 7 - Password Manager', id: 1333542190
