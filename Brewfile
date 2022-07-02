@@ -37,6 +37,7 @@ cask 'firefox'
 cask 'imageoptim'
 cask 'microsoft-edge'
 cask 'notion'
+casl 'spotify'
 cask 'visual-studio-code'
 cask 'zoom'
 
