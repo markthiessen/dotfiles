@@ -117,4 +117,7 @@ export NVM_DIR="$HOME/.nvm"
 
 export ASPNETCORE_ENVIRONMENT=Development
 
+# Homebrew: Python
+export PATH="/opt/homebrew/opt/python/libexec/bin:$PATH"
+
 eval $(thefuck --alias)
