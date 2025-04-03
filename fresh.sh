@@ -34,8 +34,6 @@ ln -s $HOME/.dotfiles/.zshrc $HOME/.zshrc
 mkdir $HOME/themes
 ln -s $HOME/Extra/zsh-dracula/dracula.zsh-theme $ZSH/themes/dracula.zsh-theme
 
-# Symlink the Mackup config file to the home directory
-ln -s $HOME/.dotfiles/.mackup.cfg $HOME/.mackup.cfg
 
 # Connect hammerspoon
 mkdir $HOME/.hammerspoon

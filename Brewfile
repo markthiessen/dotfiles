@@ -18,7 +18,6 @@ brew 'svn' # some font casks need this...
 brew 'yarn'
 brew 'imagemagick'
 brew 'pandoc'
-brew 'mackup'
 brew 'tree'
 brew 'thefuck'
 
