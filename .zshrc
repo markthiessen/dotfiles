@@ -11,7 +11,7 @@ export ZSH=$HOME/.oh-my-zsh
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="dracula"
+ZSH_THEME="" # Starship handles the prompt
 
 # Enable completions
 autoload -Uz compinit && compinit
@@ -76,9 +76,21 @@ ZSH_CUSTOM=$DOTFILES
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git aws zsh-autosuggestions zsh-syntax-highlighting zsh-completions)
 
 source $ZSH/oh-my-zsh.sh
+
+# History
+HISTSIZE=50000
+SAVEHIST=50000
+setopt SHARE_HISTORY
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_REDUCE_BLANKS
+
+# Directory navigation
+setopt AUTO_CD
+setopt AUTO_PUSHD
+setopt PUSHD_IGNORE_DUPS
 
 # User configuration
 
@@ -86,7 +98,7 @@ source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
 export LC_ALL=en_US.UTF-8
-export LANG=en_US.UTF-88
+export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
@@ -110,14 +122,65 @@ alias zshconfig="code ~/.zshrc"
 alias sc="source ~/.zshrc"
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
+BREW_PREFIX="$(brew --prefix)"
 
 export NVM_DIR="$HOME/.nvm"
-[ -s "$(brew --prefix)/opt/nvm/nvm.sh" ] && . "$(brew --prefix)/opt/nvm/nvm.sh"                                       # This loads nvm
-[ -s "$(brew --prefix)/opt/nvm/etc/bash_completion.d/nvm" ] && . "$(brew --prefix)/opt/nvm/etc/bash_completion.d/nvm" # This loads nvm bash_completion
+[ -s "$BREW_PREFIX/opt/nvm/nvm.sh" ] && . "$BREW_PREFIX/opt/nvm/nvm.sh"
+[ -s "$BREW_PREFIX/opt/nvm/etc/bash_completion.d/nvm" ] && . "$BREW_PREFIX/opt/nvm/etc/bash_completion.d/nvm"
+
+load-nvmrc() {
+  local nvmrc_path="$(nvm_find_nvmrc)"
+
+  if [ -n "$nvmrc_path" ]; then
+    local nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
+
+    if [ "$nvmrc_node_version" = "N/A" ]; then
+      nvm install
+    elif [ "$nvmrc_node_version" != "$(nvm version)" ]; then
+      nvm use
+    fi
+  elif [ -n "$(PWD=$OLDPWD nvm_find_nvmrc)" ] && [ "$(nvm version)" != "$(nvm version default)" ]; then
+    echo "Reverting to nvm default version"
+    nvm use default
+  fi
+}
+add-zsh-hook chpwd load-nvmrc
+load-nvmrc
 
 export ASPNETCORE_ENVIRONMENT=Development
+export AWS_PACKAGE_PROFILE='package-profile'
 
 # Homebrew: Python
 export PATH="/opt/homebrew/opt/python/libexec/bin:$PATH"
 
-eval $(thefuck --alias)
+# Lazy-load thefuck (saves ~200ms on shell startup)
+fuck() {
+    unfunction fuck
+    eval $(thefuck --alias)
+    fuck "$@"
+}
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+
+export LDFLAGS="-L$BREW_PREFIX/opt/openssl/lib -L$BREW_PREFIX/opt/readline/lib"
+export CPPFLAGS="-I$BREW_PREFIX/opt/openssl/include -I$BREW_PREFIX/opt/readline/include"
+export PKG_CONFIG_PATH="$BREW_PREFIX/opt/openssl/lib/pkgconfig:$BREW_PREFIX/opt/readline/lib/pkgconfig"
+
+. "$HOME/.local/bin/env"
+
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init --no-rehash - zsh)"
+
+# fzf keybindings and completion (Ctrl+R, Ctrl+T, Alt+C)
+if (( $+commands[fzf] )); then
+    source <(fzf --zsh)
+    export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
+    export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+    export FZF_ALT_C_COMMAND='fd --type d --hidden --follow --exclude .git'
+fi
+
+# Zoxide (smart cd)
+(( $+commands[zoxide] )) && eval "$(zoxide init zsh)"
+
+# Starship prompt (must be last)
+(( $+commands[starship] )) && eval "$(starship init zsh)"

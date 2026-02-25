@@ -1,56 +1,42 @@
-# Taps
-tap 'homebrew/cask'
-tap 'homebrew/cask-fonts'
-tap 'homebrew/cask-versions'
-# tap 'homebrew/bundle'
-brew tap 'homebrew/brew'
-
 # Use latest git
 brew 'git'
 brew 'python'
 
-brew 'azcopy'
-brew 'azure-cli'
 brew 'httpie'
 brew 'ipcalc'
 brew 'mas' # Mac App Store manager
-brew 'svn' # some font casks need this...
+brew 'svn' # some font casks need this
 brew 'yarn'
 brew 'imagemagick'
 brew 'pandoc'
 brew 'tree'
 brew 'thefuck'
-
 brew 'fzf'
 
+# Modern CLI tools
+brew 'ripgrep'
+brew 'fd'
+brew 'bat'
+brew 'eza'
+brew 'zoxide'
+brew 'tldr'
+brew 'jq'
+brew 'starship'
+
 # Development
-brew 'imagemagick'
 brew 'nvm'
-brew 'yarn'
 brew 'ruby'
 
 # Apps
-cask 'aerial'
 cask 'docker'
 cask 'figma'
 cask 'firefox'
 cask 'imageoptim'
-cask 'microsoft-edge'
 cask 'notion'
 cask 'spotify'
 cask 'visual-studio-code'
 cask 'zoom'
-
 cask 'hammerspoon'
-
-# Quicklook
-cask 'qlcolorcode'
-cask 'qlstephen'
-cask 'qlmarkdown'
-cask 'quicklook-json'
-cask 'suspicious-package'
-cask 'quicklookase'
-cask 'qlvideo'
 
 # Fonts
 cask 'font-fira-code'

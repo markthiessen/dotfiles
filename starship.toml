@@ -1,0 +1,76 @@
+# Timeout for commands that take too long
+command_timeout = 500
+
+# Newline between prompts
+add_newline = true
+
+format = """
+$directory\
+$git_branch\
+$git_status\
+$nodejs\
+$python\
+$ruby\
+$aws\
+$docker_context\
+$cmd_duration\
+$line_break\
+$character"""
+
+[character]
+success_symbol = "[❯](purple)"
+error_symbol = "[❯](red)"
+
+[directory]
+truncation_length = 3
+truncate_to_repo = true
+style = "bold cyan"
+
+[git_branch]
+format = "[$symbol$branch]($style) "
+style = "bold green"
+
+[git_status]
+format = '([$all_status$ahead_behind]($style) )'
+style = "bold red"
+conflicted = "="
+ahead = "⇡${count}"
+behind = "⇢${count}"
+diverged = "⇡${ahead_count}⇢${behind_count}"
+untracked = "?${count}"
+stashed = "*${count}"
+modified = "!${count}"
+staged = "+${count}"
+deleted = "✘${count}"
+
+[nodejs]
+format = "[$symbol($version)]($style) "
+symbol = "⬢ "
+detect_files = ["package.json", ".nvmrc"]
+style = "green"
+
+[python]
+format = '[${symbol}${pyenv_prefix}(${version})(\($virtualenv\))]($style) '
+symbol = "🐍 "
+style = "yellow"
+
+[ruby]
+format = "[$symbol($version)]($style) "
+symbol = "💎 "
+style = "red"
+
+[aws]
+format = '[$symbol($profile)(\($region\))]($style) '
+symbol = "☁️  "
+style = "bold orange"
+
+[docker_context]
+format = "[$symbol$context]($style) "
+symbol = "🐳 "
+style = "blue"
+only_with_files = true
+
+[cmd_duration]
+min_time = 2_000
+format = "[$duration]($style) "
+style = "bold yellow"
